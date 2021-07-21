@@ -18,26 +18,26 @@ import { ShippingComponent } from './shipping/shipping.component';
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      
+
       { path: '', component: ProductListComponent },
 
       { path: 'products/:productId', component: ProductDetailsComponent },
 
       { path: 'cart', component: CartComponent },
 
-      { path: 'shipping', component: ShippingComponent}
-      
+      { path: 'shipping', component: ShippingComponent }
+
     ])
   ],
-  declarations: [			
+  declarations: [
     AppComponent,
     TopBarComponent,
     ProductListComponent,
-      ProductAlertsComponent,
-      ProductDetailsComponent,
-      CartComponent,
-      ShippingComponent
-   ],
+    ProductAlertsComponent,
+    ProductDetailsComponent,
+    CartComponent,
+    ShippingComponent
+  ],
   bootstrap: [
     AppComponent
   ]

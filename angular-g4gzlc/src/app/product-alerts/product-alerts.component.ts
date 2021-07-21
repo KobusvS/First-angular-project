@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
-import { Product} from '..//products';
+import { Product} from '../products.model';
 import { Output, EventEmitter } from '@angular/core';
 
 @Component({

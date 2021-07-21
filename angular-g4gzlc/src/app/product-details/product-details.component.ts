@@ -1,7 +1,9 @@
 import { CartService } from './../cart.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product, products } from '../products';
+import { Product
+  //, products
+ } from '../products.model';
 
 @Component({
   selector: 'app-product-details',
@@ -24,11 +26,11 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit() {
 
-    const routeParam = 
-    this.route.snapshot.paramMap;
-    const productIdFromRoute =
-    Number(routeParam.get('productId'));
-    this.product = products.find(product => product.id === productIdFromRoute);
+    const routeParam = this.route.snapshot.paramMap;
+    
+    const productIdFromRoute =Number(routeParam.get('productId'));
+    
+    // this.product = products.find(product => product.id === productIdFromRoute);
   }
 
 }

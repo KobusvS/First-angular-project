@@ -1,15 +1,37 @@
-import { Component } from '@angular/core';
-import { products } from '../products';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { Product } from '../products.model';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent {
-  products = products;
+export class ProductListComponent implements OnInit{
+  products: Product[];
+  
+  constructor(
+    private _http: HttpClient
+  ){
+    this.products = [];
+    
+  }
+  ngOnInit():void{
+    // const httpHeaders= new HttpHeaders()
+    // console.log('httpHeaders: ', httpHeaders);
 
-  share() {
+    // httpHeaders= httpHeaders.append({"Content-Type", "application/json"})
+    const url = environment.productsURL;
+    const productsHttpCall=this._http.get(url, {responseType:"text"});
+
+    productsHttpCall.subscribe((payload)=>{
+      this.products= JSON.parse(payload)
+      
+    })
+  }
+
+  onShareClick() {
     window.alert('The product has been shared!');
   }
 
@@ -19,8 +41,3 @@ export class ProductListComponent {
 }
 
 
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/
